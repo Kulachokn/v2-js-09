@@ -1,6 +1,6 @@
 const refs = {
-  startBtn: document.querySelector('button[data-action="start"]'),
-  stopBtn: document.querySelector('button[data-action="stop"]'),
+  startBtn: document.querySelector('[data-start]'),
+  stopBtn: document.querySelector('[data-stop]'),
   body: document.querySelector('body')
 }
 
@@ -21,6 +21,7 @@ let currentColor = null;
 
 function startChanging() {
   refs.startBtn.disabled = true;
+  refs.stopBtn.disabled = false;
   currentColor = setInterval(() => {
     refs.body.style.backgroundColor = colors[randomIntegerFromInterval(0, 5)];
   }, 1000);
@@ -28,6 +29,7 @@ function startChanging() {
 
 function stopChanging() {
   refs.startBtn.disabled = false;
+  refs.stopBtn.disabled = true;
   clearInterval(currentColor);
 }
 
